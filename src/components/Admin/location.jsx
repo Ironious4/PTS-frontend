@@ -20,7 +20,7 @@ const LocationsList = () => {
   const fetchLocations = () => {
     fetch('http://127.0.0.1:5555/locations', {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
       },
     })
       .then((response) => {
@@ -57,7 +57,7 @@ const LocationsList = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
       },
       body: JSON.stringify(newLocation),
     })
@@ -104,11 +104,11 @@ const LocationsList = () => {
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://127.0.0.1:5555/locations/${selectedLocation.id}`, {
+    fetch(`https://pts-backend-1oka.onrender.com/locations/${selectedLocation.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
       },
       body: JSON.stringify(selectedLocation),
     })
@@ -143,7 +143,7 @@ const LocationsList = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://127.0.0.1:5555/locations/${id}`, {
+    fetch(`https://pts-backend-1oka.onrender.com/locations/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`,

@@ -36,14 +36,14 @@ const AddParcel = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5555/locations')
+    fetch('https://pts-backend-1oka.onrender.com/locations')
       .then((response) => response.json())
       .then((data) => {
         setLocations(data);
       })
       .catch((error) => console.error('Error fetching locations:', error));
   }, []);
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     
@@ -71,11 +71,11 @@ const AddParcel = () => {
       vehicle_id: selectedVehicleId || null,
     };
 
-    fetch('http://127.0.0.1:5555/parcels', {
+    fetch('https://pts-backend-1oka.onrender.com/parcels', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
       },
       body: JSON.stringify(parcelData),
     })
@@ -149,7 +149,7 @@ const AddParcel = () => {
     }
 
     
-    fetch('http://127.0.0.1:5555/users', {
+    fetch('https://pts-backend-1oka.onrender.com/users', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`,
       },

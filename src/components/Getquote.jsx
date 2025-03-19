@@ -12,7 +12,7 @@ const GetQuote = () => {
   const [price, setPrice] = useState(0);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5555/locations')
+    fetch('https://pts-backend-1oka.onrender.com/locations')
       .then((response) => response.json())
       .then((data) => {
         if(Array.isArray(data)){

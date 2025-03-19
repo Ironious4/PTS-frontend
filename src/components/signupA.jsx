@@ -26,7 +26,7 @@ const SignupA = () => {
       role: 'admin', 
     };
 
-    fetch('http://127.0.0.1:5555/auth/signup', {
+    fetch('https://pts-backend-1oka.onrender.com/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

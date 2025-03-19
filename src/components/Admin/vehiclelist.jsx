@@ -24,9 +24,9 @@ const VehiclesList = () => {
     }, []);
 
     const fetchVehicles = () => {
-        fetch('http://127.0.0.1:5555/vehicles', {
+        fetch('https://pts-backend-1oka.onrender.com/vehicles', {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             },
         })
             .then(response => response.json())
@@ -39,9 +39,9 @@ const VehiclesList = () => {
     };
 
     const fetchLocations = () => {
-        fetch('http://127.0.0.1:5555/locations', {
+        fetch('https://pts-backend-1oka.onrender.com/locations', {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             },
         })
             .then(response => response.json())
@@ -63,11 +63,11 @@ const VehiclesList = () => {
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
-        fetch(`http://127.0.0.1:5555/vehicles/${selectedVehicle.id}`, {
+        fetch(`https://pts-backend-1oka.onrender.com/vehicles/${selectedVehicle.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             },
             body: JSON.stringify(editVehicleData),
         })
@@ -83,10 +83,10 @@ const VehiclesList = () => {
     };
 
     const handleDelete = (vehicleId) => {
-        fetch(`http://127.0.0.1:5555/vehicles/${vehicleId}`, {
+        fetch(`https://pts-backend-1oka.onrender.com/vehicles/${vehicleId}`, {
             method: 'DELETE',
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
             },
         })
             .then(() => {

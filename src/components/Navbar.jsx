@@ -9,10 +9,10 @@ const Navbar = () => {
   const isLoggedIn=!!localStorage.getItem('access_token')
   
   const handleLogout = () => {
-    fetch('http://127.0.0.1:5555/auth/logout', {
-      method: 'GET',
+    fetch('https://pts-backend-1oka.onrender.com/auth/logout', {
+      method: 'POST',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
       },
     })
       .then(response => {
@@ -23,6 +23,16 @@ const Navbar = () => {
           localStorage.removeItem('id');
 
           Toastify({
+            text: "No valid access token found. Please log in again.",
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            backgroundColor: "#f44336",
+            stopOnFocus: true,
+          }).showToast();
+          return;
+        } else {
+          Toastify({
             text: "Logged out successfully!",
             duration: 2000,
             gravity: "top",
@@ -32,14 +42,13 @@ const Navbar = () => {
           }).showToast();
           navigate('/');
           
-        } else {
-          throw new Error('Logout failed');
         }
       })
       .catch(error => {
         console.error('Error logging out:', error);
-        Toastify({
-          text: "Error logging out. Please try again.",
+            Toastify({
+              text: "Error logging out. Please try again.",
+
           duration: 3000,
           gravity: "top",
           position: "right",
