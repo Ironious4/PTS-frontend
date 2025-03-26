@@ -23,7 +23,7 @@ const Signup = () => {
       phone_number: phoneNumber,
       email,
       password,
-      role: 'customer-service', 
+      role: 'admin', 
     };
 
     fetch('https://pts-backend-1oka.onrender.com/auth/signup', {
